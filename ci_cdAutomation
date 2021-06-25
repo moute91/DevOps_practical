@@ -1,0 +1,37 @@
+#How to create a CI?CD pipeline for git repository which need to deploy a new comit:
+for
+
+1-Ec2 instances
+
+I need to to integrate github with jenkins(intergration) with a cronjob is such a way when there is a new commit jenkins is able to picks it up the code and deploy on EC2 instance running in aws with the help of some plugins,Jenkins will looking on ansible who created those ec2 in its playbook and deploy those commint in in EC2instance
+
+Github(new commit)----Jenkins(cronjob)----ansible(ymlfile with EC2instance module)the commit will be deploy on the websever automatically.
+
+
+
+2- Elastic Beanstalk Application
+
+In this case i would set up a pipeline on aws to make sure that where is any commits changes the code can be deploy in the elastic Beanchtalk.
+for this category of project I will set a pipeline in such a way that:
+
+
+github(newcommit)--codebuild(intergrate the artifact)--codedeploy(get the artifact  and sent it to the next level)--elastik beanstalk(the new commit is runnint and we can change that the application had changed)
+
+3-ECS
+after the code is commit github,i will use some tool to deploy it on ECS
+
+
+github---codebuild--amazonECR----amazonEcs
+
+II-To Automate
+
+stanging=docker private registry
+
+to automate a deployment to a instance or containrized
+
+we can take the code who was commited in git and mak it go throught the pipeline to be contenerized.
+Integrate git with jenkins with the help of some plugins (cloubees push&publish)
+to integrate wit our private docker and versioning the code ${BUILD_NUMBER} to make sure that every commit is different in term of version
+
+github----jenkins---staging'docker_registry'(versionning ${BUILD_NUMBER}
+
